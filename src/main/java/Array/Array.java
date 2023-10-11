@@ -58,4 +58,38 @@ public class Array<E> {
         return a;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if(obj==null)
+            return false;
+        if (obj.getClass()!=this.getClass())
+            return false;
+
+        Array other=(Array) obj;
+
+        if(other.size!=this.size)
+            return false;
+
+        for(int i=0;i<size;i++){
+            if(this.arr[i]!=other.arr[i])
+                return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString(){
+        String result = "[" + arr[0];
+        for(int i=1;i<size;i++)
+        {
+            result += ", "+ arr[i];
+        }
+        return (result + "]");
+    }
+
+    @Override
+    public int hashCode(){
+        final int prime=11;
+        return((size*prime)%100);
+    }
 }
